@@ -1,0 +1,35 @@
+{
+  "name": "grunt-jshint-bfs",
+  "version": "0.0.1",
+  "description": "A Grunt JSHint task with caching",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgable/grunt-jshint-bfs.git"
+  },
+  "keywords": [
+    "grunt",
+    "gruntplugin",
+    "jshint",
+    "lint"
+  ],
+  "author": "Jacob Gable <jacob.gable@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jshint": "~1.1.0",
+    "cache-swap": "0.0.2"
+  },
+  "devDependencies": {
+    "should": "~1.2.2",
+    "mocha": "~1.9.0",
+    "grunt-simple-mocha": "~0.4.0",
+    "grunt": "~0.4.1",
+    "grunt-plato": "~0.2.0"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.0"
+  }
+}

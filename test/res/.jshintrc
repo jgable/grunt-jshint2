@@ -1,0 +1,11 @@
+{
+    "curly": true,
+    "eqeqeq": true,
+    "undef": true,
+    "predef": {
+        "module": true,
+        "exports": true,
+        "require": true,
+        "__dirname": true
+    }
+}
