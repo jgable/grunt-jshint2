@@ -77,7 +77,7 @@ describe("JSHintTask", function() {
         var mockTask = makeMockTask();
 
         mockTask._taskOptions = {
-            jshintrc: path.join(__dirname, "res", ".jshintrc")
+            jshintrc: path.join("test", "res", ".jshintrc")
         };
 
         var task = new JSHintTask(mockTask),

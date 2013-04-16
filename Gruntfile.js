@@ -17,7 +17,36 @@ module.exports = function(grunt) {
                 }
             },
             dev: ["*.js", "tasks/*.js", "lib/**/*.js", "test/*.js"],
+            jquerymobile: {
+                options: {
+                    jshintrc: "../jquery-mobile/js/.jshintrc"
+                },
+                files: {
+                    src: [
+                        "../jquery-mobile/js/**/*.js",
+                        "!../jquery-mobile/js/jquery.hashchange.js",
+                        "!../jquery-mobile/js/jquery.js",
+                        "!../jquery-mobile/js/jquery.ui.widget.js"
+                    ]
+                }
+            },
             bad: ["test/res/bad-*.js"]
+        },
+
+        "jshint": {
+            jquerymobile: {
+                options: {
+                    jshintrc: "../jquery-mobile/js/.jshintrc"
+                },
+                files: {
+                    src: [
+                        "../jquery-mobile/js/**/*.js",
+                        "!../jquery-mobile/js/jquery.hashchange.js",
+                        "!../jquery-mobile/js/jquery.js",
+                        "!../jquery-mobile/js/jquery.ui.widget.js"
+                    ]
+                }
+            }
         },
 
         "simplemocha": {
@@ -30,7 +59,7 @@ module.exports = function(grunt) {
         }
     };
 
-    cfg["jshint-bfs"].options.jshint.predef = cfg["jshint-bfs"].options.globals;
+    //cfg["jshint-bfs"].options.jshint.predef = cfg["jshint-bfs"].options.globals;
 
     cfg.plato = {
         options: {
@@ -52,9 +81,16 @@ module.exports = function(grunt) {
     grunt.initConfig(cfg);
 
     grunt.loadNpmTasks("grunt-simple-mocha");
+    grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-plato");
 
     grunt.loadTasks("tasks");
 
     grunt.registerTask("default", ["jshint-bfs:dev", "simplemocha:dev"]);
+
+    grunt.registerTask("start", function() {
+        console.time("JSHint");
+    });
+
+    grunt.registerTask("timed", [])
 };
