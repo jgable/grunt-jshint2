@@ -4,8 +4,8 @@ var grunt = require("grunt"),
     should = require("should"),
     _ = grunt.util._;
 
-var JSHintFile = require("../lib/JSHintFile"),
-    JSHintTask = require("../lib/JSHintTask");
+var JSHintFile = require("../lib/jsHintFile"),
+    JSHintTask = require("../lib/jsHintTask");
 
 describe("JSHintFile", function() {
 
