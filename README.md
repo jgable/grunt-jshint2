@@ -1,4 +1,4 @@
-grunt-jshint-bfs
+grunt-jshint-bfs [![Build Status](https://secure.travis-ci.org/jgable/grunt-jshint-bfs.png?branch=master)](http://travis-ci.org/jgable/grunt-jshint-bfs)
 ================
 
 A better, faster and stronger version of the grunt-contrib-jshint task.
