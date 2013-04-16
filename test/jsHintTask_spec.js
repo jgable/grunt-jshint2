@@ -60,7 +60,11 @@ describe("JSHintTask", function() {
         mockTask._taskOptions = {
             jshint: {
                 browser: true,
-                evil: true
+                evil: true,
+                globals: {
+                    one: false,
+                    two: true
+                }
             }
         };
 
@@ -71,6 +75,13 @@ describe("JSHintTask", function() {
 
         actual.browser.should.equal(true);
         actual.evil.should.equal(true);
+
+        should.not.exist(actual.globals);
+
+        should.exist(actual.predef);
+
+        actual.predef.one.should.equal(false);
+        actual.predef.two.should.equal(true);
     });
 
     it("can load files from jshintrc file", function() {

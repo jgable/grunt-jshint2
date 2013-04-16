@@ -5,18 +5,31 @@ module.exports = function(grunt) {
         "jshint-bfs": {
             options: {
                 jshint: {
+                    "node": true,
                     "curly": true,
                     "eqeqeq": true,
                     "undef": true
-                },
-                globals: {
-                    "module": true,
-                    "exports": true,
-                    "require": true,
-                    "__dirname": true
                 }
             },
-            dev: ["*.js", "tasks/*.js", "lib/**/*.js", "test/*.js"],
+            dev: ["*.js", "tasks/*.js", "lib/**/*.js"],
+            tests: {
+                options: {
+                    jshint: {
+                        "node": true,
+                        "curly": true,
+                        "eqeqeq": true,
+                        "undef": true
+                    },
+                    globals: {
+                        describe: false,
+                        it: false,
+                        beforeEach: false
+                    }
+                },
+                files: {
+                    src: ["test/*.js"]
+                }
+            },
 
             // This is for comparison between grunt-contrib-jshint
             // You'll need to clone jquery mobile into a peer directory
@@ -65,8 +78,6 @@ module.exports = function(grunt) {
         }
     };
 
-    //cfg["jshint-bfs"].options.jshint.predef = cfg["jshint-bfs"].options.globals;
-
     cfg.plato = {
         options: {
             jshint: cfg["jshint-bfs"].options.jshint
@@ -92,11 +103,15 @@ module.exports = function(grunt) {
 
     grunt.loadTasks("tasks");
 
-    grunt.registerTask("default", ["jshint-bfs:dev", "simplemocha:dev"]);
-
     grunt.registerTask("start", function() {
         console.time("JSHint");
     });
 
-    grunt.registerTask("timed", [])
+    grunt.registerTask("finish", function() {
+        console.timeEnd("JSHint");
+    });
+
+    grunt.registerTask("timed", ["start", "jshint-bfs:jquerymobile", "finish", "start", "jshint:jquerymobile", "finish"]);
+
+    grunt.registerTask("default", ["jshint-bfs:dev", "jshint-bfs:tests", "simplemocha:dev"]);
 };
