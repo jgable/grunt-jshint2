@@ -50,7 +50,7 @@ describe("JSHintFile", function() {
             }
 
             var hash = file._getContentsHash(contents),
-                expected = "90ed0a4a957ef8e0942f08a166a0e425f457fd9c";
+                expected = "0ce57259c415918aa6b78c5b4a24d696d449592b";
 
             hash.should.equal(expected);
 
