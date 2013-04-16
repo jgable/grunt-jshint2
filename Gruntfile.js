@@ -17,6 +17,10 @@ module.exports = function(grunt) {
                 }
             },
             dev: ["*.js", "tasks/*.js", "lib/**/*.js", "test/*.js"],
+
+            // This is for comparison between grunt-contrib-jshint
+            // You'll need to clone jquery mobile into a peer directory
+            // e.g. cd .. && git clone git://github.com/jquery/jquery-mobile.git
             jquerymobile: {
                 options: {
                     jshintrc: "../jquery-mobile/js/.jshintrc"
@@ -29,11 +33,13 @@ module.exports = function(grunt) {
                         "!../jquery-mobile/js/jquery.ui.widget.js"
                     ]
                 }
-            },
-            bad: ["test/res/bad-*.js"]
+            }
         },
 
         "jshint": {
+            // This is for comparison between grunt-contrib-jshint
+            // You'll need to clone jquery mobile into a peer directory
+            // e.g. cd .. && git clone git://github.com/jquery/jquery-mobile.git
             jquerymobile: {
                 options: {
                     jshintrc: "../jquery-mobile/js/.jshintrc"
