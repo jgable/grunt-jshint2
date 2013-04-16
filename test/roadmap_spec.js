@@ -18,5 +18,12 @@ describe("grunt-jshint-bfs", function() {
         return true;
     });
 
-    it("has higher maintainability statistics than grunt-contrib-jshint");
+    it("has higher maintainability statistics than grunt-contrib-jshint", function() {
+        // Gotten by running grunt plato and checking the .plato-*/index.html
+        // TODO: Automate this somehow?
+        var theirMaintainability = 61.28,
+            ourMaintainability = 75.86;
+
+        ourMaintainability.should.be.above(theirMaintainability);
+    });
 });
