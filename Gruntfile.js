@@ -37,6 +37,16 @@ module.exports = function(grunt) {
                 }
             },
 
+            dev_xml: {
+                options: {
+                    reporter: "xml",
+                    dest: "test/res/xmlStyleOutput.xml"
+                },
+                files: {
+                    src: ["*.js", "tasks/*.js", "lib/**/*.js"]
+                }
+            },
+
             // For testing output of errors
             bad: ["test/res/bad-*.js"],
 
@@ -44,6 +54,16 @@ module.exports = function(grunt) {
                 options: {
                     reporter: "checkstyle",
                     dest: "test/res/checkStyleOutput.xml"
+                },
+                files: {
+                    src: ["test/res/bad-*.js"]
+                }
+            },
+
+            bad_xml: {
+                options: {
+                    reporter: "xml",
+                    dest: "test/res/xmlStyleOutput.xml"
                 },
                 files: {
                     src: ["test/res/bad-*.js"]

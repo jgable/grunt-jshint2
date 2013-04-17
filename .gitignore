@@ -2,3 +2,4 @@
 node_modules
 .plato-*
 checkStyleOutput.xml
+xmlStyleOutput.xml
