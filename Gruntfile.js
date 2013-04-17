@@ -88,8 +88,8 @@ module.exports = function(grunt) {
         },
         "grunt-contrib-jshint": {
             options: {
-                // Disabled because it's not present on travis-ci server
-                //jshint: grunt.file.readJSON("../grunt-contrib-jshint/.jshintrc")
+                // Disabled reading their jshintrc because it's not present on travis-ci server
+                // TODO: grunt.file.readJSON("../grunt-contrib-jshint/.jshintrc")
                 jshint: false
             },
             files: {
