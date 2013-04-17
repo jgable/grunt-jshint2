@@ -73,9 +73,14 @@ describe("JSHintTask", function() {
 
         should.exist(actual);
 
+        // Were specified, should match
         actual.browser.should.equal(true);
         actual.evil.should.equal(true);
 
+        // Was not specified, should not be there
+        should.not.exist(actual.eqeqeq);
+
+        // Should be pruned off the options object into predef
         should.not.exist(actual.globals);
 
         should.exist(actual.predef);

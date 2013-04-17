@@ -1,25 +1,21 @@
+var path = require("path");
+
+var ncp = require("ncp").ncp;
 
 module.exports = function(grunt) {
 
     var cfg = {
         "jshint-bfs": {
             options: {
-                jshint: {
-                    "node": true,
-                    "curly": true,
-                    "eqeqeq": true,
-                    "undef": true
-                }
+                jshintrc: ".jshintrc"
             },
+
+            // All the lib and task files
             dev: ["*.js", "tasks/*.js", "lib/**/*.js"],
+
+            // All the mocha test files
             tests: {
                 options: {
-                    jshint: {
-                        "node": true,
-                        "curly": true,
-                        "eqeqeq": true,
-                        "undef": true
-                    },
                     globals: {
                         describe: false,
                         it: false,
@@ -30,6 +26,9 @@ module.exports = function(grunt) {
                     src: ["test/*.js"]
                 }
             },
+
+            // For testing output of errors
+            bad: ["test/res/bad-*.js"],
 
             // This is for comparison between grunt-contrib-jshint
             // You'll need to clone jquery mobile into a peer directory
@@ -79,17 +78,21 @@ module.exports = function(grunt) {
     };
 
     cfg.plato = {
-        options: {
-            jshint: cfg["jshint-bfs"].options.jshint
-        },
         "grunt-jshint-bfs": {
+            options: {
+                jshint: grunt.file.readJSON(".jshintrc")
+            },
             files: {
                 ".plato-grunt-jshint-bfs": ["tasks/*.js", "lib/**/*.js"]
             }
         },
         "grunt-contrib-jshint": {
+            options: {
+                jshint: grunt.file.readJSON("../grunt-contrib-jshint/.jshintrc")
+            },
             files: {
-                // If you want to run this for yourself you'll need to update your path to grunt-contrib-jshint
+                // If you want to run this for yourself you'll need to clone the grunt-contrib-jshint repo into a peer directory
+                // e.g. cd .. && git clone git://github.com/gruntjs/grunt-contrib-jshint.git
                 ".plato-grunt-contrib-jshint": ["../grunt-contrib-jshint/tasks/**/*.js"]
             }
         }
@@ -102,6 +105,30 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-plato");
 
     grunt.loadTasks("tasks");
+
+    // Recursively copy the plato report directory files over to dropbox for viewing
+    grunt.registerTask("copy-plato", function() {
+        var done = this.async(),
+            files = {
+                "/Users/jacob/Dropbox/Public/plato/grunt-contrib-jshint/": ".plato-grunt-contrib-jshint/",
+                "/Users/jacob/Dropbox/Public/plato/grunt-jshint-bfs/": ".plato-grunt-jshint-bfs/"
+            },
+            cpFuncs = grunt.util._.map(files, function(src, dest) {
+                return function(cb) {
+                    ncp(path.join(process.cwd(), src), dest, cb);
+                };
+            });
+
+        grunt.util.async.parallel(cpFuncs, function(err) {
+            if (err) { 
+                throw err;
+            }
+
+            done();
+        });
+    });
+
+    grunt.registerTask("report", ['plato', 'copy-plato']);
 
     grunt.registerTask("start", function() {
         console.time("JSHint");
