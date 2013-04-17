@@ -88,7 +88,9 @@ module.exports = function(grunt) {
         },
         "grunt-contrib-jshint": {
             options: {
-                jshint: grunt.file.readJSON("../grunt-contrib-jshint/.jshintrc")
+                // Disabled because it's not present on travis-ci server
+                //jshint: grunt.file.readJSON("../grunt-contrib-jshint/.jshintrc")
+                jshint: false
             },
             files: {
                 // If you want to run this for yourself you'll need to clone the grunt-contrib-jshint repo into a peer directory
