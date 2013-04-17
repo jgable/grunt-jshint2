@@ -123,7 +123,7 @@ describe("JSHintFile", function() {
             success.should.equal(true);
 
             // Does not report that it was cached.
-            should.not.exist(problems);
+            problems.should.equal(false);
 
             file.lint(function(err, nextSuccess, nextProblems) {
                 if(err) {

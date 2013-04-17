@@ -1,6 +1,6 @@
 {
   "name": "grunt-jshint-bfs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Grunt JSHint task with caching",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,8 @@
     "grunt": "~0.4.1",
     "grunt-plato": "~0.2.0",
     "grunt-contrib-jshint": "~0.4.3",
-    "ncp": "~0.4.2"
+    "ncp": "~0.4.2",
+    "xml2js": "~0.2.6"
   },
   "peerDependencies": {
     "grunt": "~0.4.0"

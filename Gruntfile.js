@@ -27,8 +27,28 @@ module.exports = function(grunt) {
                 }
             },
 
+            dev_checkstyle: {
+                options: {
+                    reporter: "checkstyle",
+                    dest: "test/res/checkStyleOutput.xml"
+                },
+                files: {
+                    src: ["*.js", "tasks/*.js", "lib/**/*.js"]
+                }
+            },
+
             // For testing output of errors
             bad: ["test/res/bad-*.js"],
+
+            bad_checkstyle: {
+                options: {
+                    reporter: "checkstyle",
+                    dest: "test/res/checkStyleOutput.xml"
+                },
+                files: {
+                    src: ["test/res/bad-*.js"]
+                }
+            },
 
             // This is for comparison between grunt-contrib-jshint
             // You'll need to clone jquery mobile into a peer directory
