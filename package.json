@@ -1,14 +1,14 @@
 {
-  "name": "grunt-jshint-bfs",
-  "version": "0.0.2",
-  "description": "A Grunt JSHint task with caching",
+  "name": "grunt-jshint2",
+  "version": "0.1.0",
+  "description": "A better JSHint task with caching and asynchonous linting.",
   "main": "index.js",
   "scripts": {
     "test": "grunt"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jgable/grunt-jshint-bfs.git"
+    "url": "https://github.com/jgable/grunt-jshint2.git"
   },
   "keywords": [
     "grunt",
@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "jshint": "~1.1.0",
-    "cache-swap": "0.0.2"
+    "cache-swap": "~0.0.3"
   },
   "devDependencies": {
     "should": "~1.2.2",

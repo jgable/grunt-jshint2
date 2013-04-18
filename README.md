@@ -1,12 +1,11 @@
-grunt-jshint-bfs [![Build Status](https://secure.travis-ci.org/jgable/grunt-jshint-bfs.png?branch=master)](http://travis-ci.org/jgable/grunt-jshint-bfs)
+grunt jshint2 [![Build Status](https://secure.travis-ci.org/jgable/grunt-jshint2.png?branch=master)](http://travis-ci.org/jgable/grunt-jshint2)
 ================
 
-The repo I want the grunt-contrib-jshint repo to be.
+The task I want the [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint) task to be.
 
-## Why?
+## Why another one?
 
-The existing grunt-contrib-jshint task at the time of this writing is hard to change and has limited unit tests.  Rather than work the required large changes into your existing codebase I've decided to make [grunt-jshint-bfs](https://github.com/jgable/grunt-jshint-bfs).
-
+I [offered to merge](https://github.com/gruntjs/grunt-contrib-jshint/issues/45) but they didn't seem interested in saving puppies.
 
 ## Significant Differences
 
@@ -33,18 +32,6 @@ If we've previously run jshint on a file, it should be cached so that we do not 
 #### Reporter Architecture
 
 While there is an existing Pull Request open (/gruntjs/grunt-contrib-jshint/#34) to implement reporters, I am not happy with the hard linking of the reporter files and the hacky overriding of `stdout` necessary to make them work together nicely.  I've ported over the existing [xml](https://github.com/jgable/grunt-jshint-bfs/blob/master/lib/reporters/xml.js) and [checkstyle ](https://github.com/jgable/grunt-jshint-bfs/blob/master/lib/reporters/checkstyle.js) reporters, and have plans to write a base legacy reporter class that will help others who have existing reporters built port them to be used with this task.
-
-#### Misc. Style stuff
-
-You guys are 2 space tab kinda guys, I'm a 4 space tab kinda guy.  You guys are not fans of white space, I'm a big fan of it.  Evidently you are also against single var statements for multiple assignment.  I have no problem converting to your style if you want.
-
-## Where do we go from here?
-
-I'd love to hear some feedback and have a dialog about the points I've raised above.  I've never understood the init function based architecture in use and I'm curious if I might be missing something.
-
-I'd be happy to talk about starting up a new branch with this code and merging it in over time.  I'm sensitive to the options structure change and understand that it might be something that a minor version would be incremented for.
-
-As a final option, if all my code just makes you want to vomit in your mouth a little bit, I could just publish this as a separate task and check back in from time to time looking wistfully at your code and thinking of the oh so sweet merging we could have done together.
 
 ### License
 
