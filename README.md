@@ -31,7 +31,7 @@ If we've previously run jshint on a file, it should be cached so that we do not 
 
 #### Reporter Architecture
 
-While there is an existing Pull Request open (/gruntjs/grunt-contrib-jshint/#34) to implement reporters, I am not happy with the hard linking of the reporter files and the hacky overriding of `stdout` necessary to make them work together nicely.  I've ported over the existing [xml](https://github.com/jgable/grunt-jshint-bfs/blob/master/lib/reporters/xml.js) and [checkstyle ](https://github.com/jgable/grunt-jshint-bfs/blob/master/lib/reporters/checkstyle.js) reporters, and have plans to write a base legacy reporter class that will help others who have existing reporters built port them to be used with this task.
+While there is an existing Pull Request open (/gruntjs/grunt-contrib-jshint/#34) to implement reporters, I am not happy with the hard linking of the reporter files and the hacky overriding of `stdout` necessary to make them work together nicely.  I've ported over the existing [xml](https://github.com/jgable/grunt-jshint2/blob/master/lib/reporters/xml.js) and [checkstyle ](https://github.com/jgable/grunt-jshint2/blob/master/lib/reporters/checkstyle.js) reporters, and have plans to write a base legacy reporter class that will help others who have existing reporters built port them to be used with this task.
 
 ### License
 

@@ -1,6 +1,6 @@
 var should = require("should");
 
-describe("grunt-jshint-bfs", function() {
+describe("grunt-jshint2", function() {
 
     it("is class based instead of init(..) based", function() {
         return true;

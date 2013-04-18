@@ -5,7 +5,7 @@ var ncp = require("ncp").ncp;
 module.exports = function(grunt) {
 
     var cfg = {
-        "jshint-bfs": {
+        "jshint2": {
             options: {
                 jshintrc: ".jshintrc"
             },
@@ -118,18 +118,20 @@ module.exports = function(grunt) {
     };
 
     cfg.plato = {
-        "grunt-jshint-bfs": {
+        "grunt-jshint2": {
             options: {
+                title: "grunt-jshint2",
                 jshint: grunt.file.readJSON(".jshintrc")
             },
             files: {
-                ".plato-grunt-jshint-bfs": ["tasks/*.js", "lib/**/*.js"]
+                ".plato-grunt-jshint2": ["tasks/*.js", "lib/**/*.js"]
             }
         },
         "grunt-contrib-jshint": {
             options: {
                 // Disabled reading their jshintrc because it's not present on travis-ci server
                 // TODO: grunt.file.readJSON("../grunt-contrib-jshint/.jshintrc")
+                title: "grunt-contrib-jshint2",
                 jshint: false
             },
             files: {
@@ -153,7 +155,7 @@ module.exports = function(grunt) {
         var done = this.async(),
             files = {
                 "/Users/jacob/Dropbox/Public/plato/grunt-contrib-jshint/": ".plato-grunt-contrib-jshint/",
-                "/Users/jacob/Dropbox/Public/plato/grunt-jshint-bfs/": ".plato-grunt-jshint-bfs/"
+                "/Users/jacob/Dropbox/Public/plato/grunt-jshint2/": ".plato-grunt-jshint2/"
             },
             cpFuncs = grunt.util._.map(files, function(src, dest) {
                 return function(cb) {
@@ -180,7 +182,7 @@ module.exports = function(grunt) {
         console.timeEnd("JSHint");
     });
 
-    grunt.registerTask("timed", ["start", "jshint-bfs:jquerymobile", "finish", "start", "jshint:jquerymobile", "finish"]);
+    grunt.registerTask("timed", ["start", "jshint2:jquerymobile", "finish", "start", "jshint:jquerymobile", "finish"]);
 
-    grunt.registerTask("default", ["jshint-bfs:dev", "jshint-bfs:tests", "simplemocha:dev"]);
+    grunt.registerTask("default", ["jshint2:dev", "jshint2:tests", "simplemocha:dev"]);
 };
