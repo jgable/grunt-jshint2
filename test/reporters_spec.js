@@ -27,8 +27,36 @@ describe("Reporters", function() {
 
     // Example lintResults for testing reporters
     var filePath = path.join(process.cwd(), "test/res/bad-3.js"),
-        lintResult = {
-            errors: [ { id: '(error)',
+    lintResult = {
+        errors: [{
+                id: '(error)',
+                raw: 'Missing semicolon.',
+                code: 'W033',
+                evidence: '\tvar thing = 1',
+                line: 2,
+                character: 18,
+                scope: '(main)',
+                a: undefined,
+                b: undefined,
+                c: undefined,
+                d: undefined,
+                reason: 'Missing semicolon.'
+        }],
+        data: {
+            functions: [{
+                    name: '"anonymous"',
+                    param: undefined,
+                    line: 1,
+                    character: 11,
+                    last: 3,
+                    lastcharacter: 2
+            }],
+            options: {
+                indent: 4,
+                maxerr: 50
+            },
+            errors: [{
+                    id: '(error)',
                     raw: 'Missing semicolon.',
                     code: 'W033',
                     evidence: '\tvar thing = 1',
@@ -39,28 +67,14 @@ describe("Reporters", function() {
                     b: undefined,
                     c: undefined,
                     d: undefined,
-                    reason: 'Missing semicolon.' } ],
-            data: { 
-                functions: [ { name: '"anonymous"',
-                       param: undefined,
-                       line: 1,
-                       character: 11,
-                       last: 3,
-                       lastcharacter: 2 } ],
-                options: { indent: 4, maxerr: 50 },
-                errors: [ { id: '(error)',
-                   raw: 'Missing semicolon.',
-                   code: 'W033',
-                   evidence: '\tvar thing = 1',
-                   line: 2,
-                   character: 18,
-                   scope: '(main)',
-                   a: undefined,
-                   b: undefined,
-                   c: undefined,
-                   d: undefined,
-                   reason: 'Missing semicolon.' } ],
-                unused: [ { name: 'thing', line: 2, character: 14 } ] }
+                    reason: 'Missing semicolon.'
+            }],
+            unused: [{
+                    name: 'thing',
+                    line: 2,
+                    character: 14
+            }]
+        }
     };
 
     describe("DefaultReporter", function() { 
