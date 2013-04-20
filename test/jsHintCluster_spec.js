@@ -10,6 +10,8 @@ var JSHintCluster = require("../lib/processors/jsHintCluster");
 describe("JSHintCluster", function() {
 
     it("can start and stop itself", function(done) {
+        this.timeout(0);
+        
         var jsc = new JSHintCluster();
 
         jsc.on("started", function() {
