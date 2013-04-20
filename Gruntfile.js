@@ -78,6 +78,24 @@ module.exports = function(grunt) {
                 reporter: 'spec'
             },
             dev: ["test/*_spec.js"]
+        },
+
+        "concat": {
+            docs: {
+                options: {
+                    separator: "\n\n"
+                },
+                files: {
+                    "README.md": [
+                        "docs/intro.md",
+                        "docs/options.md",
+                        "docs/caching.md",
+                        "docs/reporters.md",
+                        "docs/processors.md",
+                        "docs/license.md"
+                    ]
+                }
+            }
         }
     };
 
@@ -109,6 +127,7 @@ module.exports = function(grunt) {
     grunt.initConfig(cfg);
 
     grunt.loadNpmTasks("grunt-simple-mocha");
+    grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-plato");
 
     grunt.loadTasks("tasks");
@@ -137,5 +156,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask("report", ['plato', 'copy-plato']);
 
-    grunt.registerTask("default", ["jshint2:dev", "jshint2:tests", "simplemocha:dev"]);
+    grunt.registerTask("default", ["concat:docs", "jshint2:dev", "jshint2:tests", "simplemocha:dev"]);
 };
