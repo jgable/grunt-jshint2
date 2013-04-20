@@ -20,7 +20,9 @@
   "license": "MIT",
   "dependencies": {
     "jshint": "~1.1.0",
-    "cache-swap": "~0.0.3"
+    "cache-swap": "~0.0.3",
+    "lodash": "~1.2.0",
+    "async": "~0.2.7"
   },
   "devDependencies": {
     "should": "~1.2.2",
@@ -28,7 +30,6 @@
     "grunt-simple-mocha": "~0.4.0",
     "grunt": "~0.4.1",
     "grunt-plato": "~0.2.0",
-    "grunt-contrib-jshint": "~0.4.3",
     "ncp": "~0.4.2",
     "xml2js": "~0.2.6"
   },

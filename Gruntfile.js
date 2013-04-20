@@ -68,42 +68,6 @@ module.exports = function(grunt) {
                 files: {
                     src: ["test/res/bad-*.js"]
                 }
-            },
-
-            // This is for comparison between grunt-contrib-jshint
-            // You'll need to clone jquery mobile into a peer directory
-            // e.g. cd .. && git clone git://github.com/jquery/jquery-mobile.git
-            jquerymobile: {
-                options: {
-                    jshintrc: "../jquery-mobile/js/.jshintrc"
-                },
-                files: {
-                    src: [
-                        "../jquery-mobile/js/**/*.js",
-                        "!../jquery-mobile/js/jquery.hashchange.js",
-                        "!../jquery-mobile/js/jquery.js",
-                        "!../jquery-mobile/js/jquery.ui.widget.js"
-                    ]
-                }
-            }
-        },
-
-        "jshint": {
-            // This is for comparison between grunt-contrib-jshint
-            // You'll need to clone jquery mobile into a peer directory
-            // e.g. cd .. && git clone git://github.com/jquery/jquery-mobile.git
-            jquerymobile: {
-                options: {
-                    jshintrc: "../jquery-mobile/js/.jshintrc"
-                },
-                files: {
-                    src: [
-                        "../jquery-mobile/js/**/*.js",
-                        "!../jquery-mobile/js/jquery.hashchange.js",
-                        "!../jquery-mobile/js/jquery.js",
-                        "!../jquery-mobile/js/jquery.ui.widget.js"
-                    ]
-                }
             }
         },
 
@@ -145,7 +109,6 @@ module.exports = function(grunt) {
     grunt.initConfig(cfg);
 
     grunt.loadNpmTasks("grunt-simple-mocha");
-    grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-plato");
 
     grunt.loadTasks("tasks");
@@ -173,16 +136,6 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask("report", ['plato', 'copy-plato']);
-
-    grunt.registerTask("start", function() {
-        console.time("JSHint");
-    });
-
-    grunt.registerTask("finish", function() {
-        console.timeEnd("JSHint");
-    });
-
-    grunt.registerTask("timed", ["start", "jshint2:jquerymobile", "finish", "start", "jshint:jquerymobile", "finish"]);
 
     grunt.registerTask("default", ["jshint2:dev", "jshint2:tests", "simplemocha:dev"]);
 };

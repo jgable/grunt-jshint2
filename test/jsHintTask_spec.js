@@ -105,52 +105,6 @@ describe("JSHintTask", function() {
         actual.eqeqeq.should.equal(true);
     });
 
-    it("lints each file asynchronously", function(done) {
-        grunt.log.muted = true;
-        
-        var mockTask = makeMockTask(function(err) {
-            if(err) {
-                throw err;
-            }
-
-            // How many files did we start doing before we finished one
-            var leadingStarts = 0;
-            for(var i = 0; i < events.length; i++) {
-                if(events[i].slice(0, 5) !== "start") {
-                    break;
-                }
-
-                leadingStarts++;
-            }
-
-            leadingStarts.should.be.above(2);
-
-            done();
-        });
-
-        mockTask._taskOptions = {
-            jshint: {
-                browser: true,
-                evil: true
-            }
-        };
-
-        var task = new JSHintTask(mockTask),
-            orig_lintFile = task._lintFile,
-            events = [];
-
-        // Stub the lint method to confirm async activity
-        task._lintFile = function(filePath, opts, globals, cache, lintDone) {
-            events.push("start:" + filePath);
-            orig_lintFile.call(task, filePath, opts, globals, cache, function(err, success, problems) {
-                events.push("end:" + filePath);
-                lintDone(err, success, problems);
-            });
-        };
-
-        task.run();
-    });
-
     it("can clear the cache swap", function(done) {
         JSHintTask.clearSwap({}, function(err) {
             if(err) {
