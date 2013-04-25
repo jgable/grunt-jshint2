@@ -1,7 +1,7 @@
 {
   "name": "grunt-jshint2",
-  "version": "0.1.0",
-  "description": "A better JSHint task with caching and asynchonous linting.",
+  "version": "0.1.1",
+  "description": "A JSHint task with caching and asynchonous linting.",
   "main": "index.js",
   "scripts": {
     "test": "grunt"
