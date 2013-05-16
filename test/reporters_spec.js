@@ -3,6 +3,7 @@ var path = require("path"),
 
 var grunt = require("grunt"),
     should = require("should"),
+    sinon = require("sinon"),
     xml2js = require("xml2js");
 
 var DefaultReporter = require("../lib/reporters/default"),
@@ -11,6 +12,8 @@ var DefaultReporter = require("../lib/reporters/default"),
     reporterResolver = require("../lib/reporterResolver");
 
 describe("Reporters", function() {
+
+    // TODO: if we use sinon stubs any more we should just go ahead and make a module level sandbox and restore it after every test.
 
     var testReporterInterface = function(ReporterClass) {
         should.exist(ReporterClass);
@@ -80,6 +83,56 @@ describe("Reporters", function() {
     describe("DefaultReporter", function() { 
         it("implements start, finish, success and error", function() {
             testReporterInterface(DefaultReporter);
+        });
+
+        it("reports successful totals when all files done", function() {
+            var reporter = new DefaultReporter();
+
+            var sandbox = sinon.sandbox.create();
+
+            sandbox.stub(grunt.verbose, "write");
+            sandbox.stub(grunt.verbose, "ok");
+            sandbox.stub(grunt.log, "writeln");
+            sandbox.stub(grunt.log, "error");
+
+            var okStub = sandbox.stub(grunt.log, "ok");
+
+            reporter.start();
+            
+            reporter.success("testfile1.js", false);
+            reporter.success("testfile2.js", false);
+            reporter.success("testfile3.js", false);
+            
+            reporter.finish(["testfile1.js", "testfile2.js", "testfile3.js"]);
+
+            sandbox.restore();
+
+            okStub.calledWith("3 files lint free.").should.equal(true);
+        });
+
+        it("does not report files linted successfully if error", function() {
+            var reporter = new DefaultReporter();
+
+            var sandbox = sinon.sandbox.create();
+
+            sandbox.stub(grunt.verbose, "write");
+            sandbox.stub(grunt.verbose, "ok");
+            sandbox.stub(grunt.log, "writeln");
+            sandbox.stub(grunt.log, "error");
+
+            var okStub = sandbox.stub(grunt.log, "ok");
+
+            reporter.start();
+            
+            reporter.success("testfile1.js", false);
+            reporter.error("testfile2.js", [], {});
+            reporter.error("testfile3.js", [], {});
+            
+            reporter.finish(["testfile1.js", "testfile2.js", "testfile3.js"]);
+
+            sandbox.restore();
+
+            okStub.called.should.equal(false);
         });
     });
 

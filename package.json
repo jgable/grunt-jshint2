@@ -1,6 +1,6 @@
 {
   "name": "grunt-jshint2",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A JSHint task with caching and asynchonous linting.",
   "main": "index.js",
   "scripts": {
@@ -32,7 +32,8 @@
     "grunt-plato": "~0.2.0",
     "ncp": "~0.4.2",
     "xml2js": "~0.2.6",
-    "grunt-contrib-concat": "~0.2.0"
+    "grunt-contrib-concat": "~0.2.0",
+    "sinon": "~1.7.2"
   },
   "peerDependencies": {
     "grunt": "~0.4.0"
