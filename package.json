@@ -1,6 +1,6 @@
 {
   "name": "grunt-jshint2",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A JSHint task with caching and asynchonous linting.",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "jshint": "2.1.7",
-    "cache-swap": "~0.0.3",
+    "cache-swap": "~0.0.4",
     "lodash": "~1.2.0",
     "async": "~0.2.7"
   },
