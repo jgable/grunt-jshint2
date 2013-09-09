@@ -1,6 +1,6 @@
 {
   "name": "grunt-jshint2",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A JSHint task with caching and asynchonous linting.",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "author": "Jacob Gable <jacob.gable@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "jshint": "2.1.7",
+    "jshint": "2.1.10",
     "cache-swap": "~0.0.4",
     "lodash": "~1.2.0",
     "async": "~0.2.7"
