@@ -127,7 +127,7 @@ function MyProcessor(options) {
 	this.options = options;
 }
 
-_.extend(MyProcessor.prototype = EventEmitter.prototype);
+_.extend(MyProcessor.prototype, EventEmitter.prototype);
 
 _.extend(MyProcessor.prototype, {
 	processFiles: function() {
