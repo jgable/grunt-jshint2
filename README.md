@@ -149,4 +149,4 @@ _.extend(MyProcessor.prototype, {
 
 ### License
 
-Copyright 2013 Jacob Gable, [MIT License](http://opensource.org/licenses/MIT).
+Copyright 2013, 2014 Jacob Gable, [MIT License](http://opensource.org/licenses/MIT).
